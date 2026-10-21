@@ -1,0 +1,88 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://objects/coin.gd" id="1_1o7s2"]
+[ext_resource type="Texture2D" path="res://assets/tiles.png" id="2_iwokp"]
+[ext_resource type="AudioStream" path="res://assets/sounds/coin.ogg" id="3_hyi47"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osa5c"]
+atlas = ExtResource("2_iwokp")
+region = Rect2(198, 126, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufjjf"]
+atlas = ExtResource("2_iwokp")
+region = Rect2(216, 126, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6lxrr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osa5c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufjjf")
+}],
+"loop": 1,
+"name": &"spin",
+"speed": 4.0
+}]
+
+[sub_resource type="Animation" id="Animation_aqfl5"]
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gdi08"]
+_data = {
+&"float": SubResource("Animation_aqfl5")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5jbcj"]
+radius = 6.0
+
+[node name="Coin" type="Area2D" unique_id=1457245352 groups=["coins"]]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_1o7s2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1528099411]
+sprite_frames = SubResource("SpriteFrames_6lxrr")
+animation = &"spin"
+autoplay = "spin"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1281562188]
+libraries/ = SubResource("AnimationLibrary_gdi08")
+autoplay = &"float"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=519471037]
+shape = SubResource("CircleShape2D_5jbcj")
+
+[node name="Sparkle" type="CPUParticles2D" parent="." unique_id=340924818]
+emitting = false
+amount = 10
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 50.0
+scale_amount_max = 2.0
+color = Color(1, 0.85, 0.3, 1)
+
+[node name="CoinSound" type="AudioStreamPlayer" parent="." unique_id=1217130336]
+stream = ExtResource("3_hyi47")
+bus = &"SFX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

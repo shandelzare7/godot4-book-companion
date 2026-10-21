@@ -1,0 +1,22 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://checkpoints/08_collect.gd" id="1_jdba6"]
+[ext_resource type="Texture2D" path="res://icon.svg" id="2_q007a"]
+[ext_resource type="Script" path="res://robot.gd" id="3_j38sv"]
+
+[node name="RobotStage" type="Node2D" unique_id=647518982]
+script = ExtResource("1_jdba6")
+
+[node name="Robot" type="Sprite2D" parent="." unique_id=1139492587]
+position = Vector2(100, 300)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_q007a")
+script = ExtResource("3_j38sv")
+
+[node name="CountLabel" type="Label" parent="." unique_id=571080488]
+offset_left = 24.0
+offset_top = 20.0
+offset_right = 25.0
+offset_bottom = 43.0
+theme_override_font_sizes/font_size = 28
+text = "已收集：0"

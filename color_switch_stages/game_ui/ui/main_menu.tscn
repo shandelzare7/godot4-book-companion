@@ -1,0 +1,47 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/main_menu.gd" id="1_0dkrt"]
+[ext_resource type="PackedScene" path="res://ui/settings_menu.tscn" id="2_wk0pr"]
+
+[node name="MainMenu" type="Control" unique_id=1861248031]
+layout_mode = 3
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_0dkrt")
+
+[node name="Center" type="CenterContainer" parent="." unique_id=1526094121]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Box" type="VBoxContainer" parent="Center" unique_id=1042876870]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="TitleLabel" type="Label" parent="Center/Box" unique_id=1700446228]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.250980392, 0.301960784, 0.4, 1)
+text = "双色跳台"
+horizontal_alignment = 1
+
+[node name="StartButton" type="Button" parent="Center/Box" unique_id=9172307]
+layout_mode = 2
+text = "开始游戏"
+
+[node name="SettingsButton" type="Button" parent="Center/Box" unique_id=723540041]
+layout_mode = 2
+text = "设置"
+
+[node name="QuitButton" type="Button" parent="Center/Box" unique_id=848561024]
+layout_mode = 2
+text = "退出"
+
+[node name="SettingsMenu" parent="." unique_id=814965197 instance=ExtResource("2_wk0pr")]
+layout_mode = 1
+anchors_preset = 15
+
+[connection signal="pressed" from="Center/Box/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Center/Box/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Center/Box/QuitButton" to="." method="_on_quit_button_pressed"]

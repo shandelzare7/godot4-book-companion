@@ -1,0 +1,47 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/about_panel.gd" id="1_wmqtw"]
+
+[node name="AboutPanel" type="Control" unique_id=2012912038]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_wmqtw")
+
+[node name="Dim" type="ColorRect" parent="." unique_id=1908785016]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.501960784)
+
+[node name="Center" type="CenterContainer" parent="." unique_id=66654655]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="PanelContainer" parent="Center" unique_id=1486144700]
+layout_mode = 2
+
+[node name="Box" type="VBoxContainer" parent="Center/Panel" unique_id=788353165]
+layout_mode = 2
+
+[node name="InfoLabel" type="Label" parent="Center/Panel/Box" unique_id=537381885]
+layout_mode = 2
+text = "双色跳台
+美术：Kenney
+字体：缝合像素字体"
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="Center/Panel/Box" unique_id=1702785820]
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+text = "返回"
+
+[connection signal="pressed" from="Center/Panel/Box/BackButton" to="." method="_on_back_button_pressed"]

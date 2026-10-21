@@ -1,0 +1,34 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://objects/moving_platform.gd" id="1_isb40"]
+[ext_resource type="Texture2D" path="res://assets/tiles.png" id="2_0rtgj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8pw80"]
+size = Vector2(54, 5)
+
+[node name="MovingPlatform" type="AnimatableBody2D" unique_id=2013106091]
+collision_mask = 0
+script = ExtResource("1_isb40")
+metadata/_edit_group_ = true
+
+[node name="Sprite1" type="Sprite2D" parent="." unique_id=934274527]
+position = Vector2(-18, 0)
+texture = ExtResource("2_0rtgj")
+region_enabled = true
+region_rect = Rect2(144, 36, 18, 18)
+
+[node name="Sprite2" type="Sprite2D" parent="." unique_id=482302619]
+texture = ExtResource("2_0rtgj")
+region_enabled = true
+region_rect = Rect2(162, 36, 18, 18)
+
+[node name="Sprite3" type="Sprite2D" parent="." unique_id=1132090925]
+position = Vector2(18, 0)
+texture = ExtResource("2_0rtgj")
+region_enabled = true
+region_rect = Rect2(180, 36, 18, 18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=541413524]
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_8pw80")
+one_way_collision = true

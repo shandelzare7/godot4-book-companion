@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://checkpoints/02_lab_variables.gd" id="1_axww4"]
+
+[node name="SyntaxLab" type="Node2D" unique_id=2137264835]
+script = ExtResource("1_axww4")

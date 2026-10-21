@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://energy_block.gd" id="1_84j73"]
+
+[node name="EnergyBlock" type="Node2D" unique_id=114587307 groups=["energy"]]
+script = ExtResource("1_84j73")
+
+[node name="Body" type="ColorRect" parent="." unique_id=1288318850]
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+mouse_filter = 2
+color = Color(1, 0.8156863, 0.2509804, 1)

@@ -1,0 +1,94 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/hud.gd" id="1_546lt"]
+[ext_resource type="Texture2D" path="res://assets/tiles.png" id="2_7ihmi"]
+[ext_resource type="Texture2D" path="res://assets/blocks.png" id="3_en2x2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1v5rv"]
+atlas = ExtResource("2_7ihmi")
+region = Rect2(72, 36, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q43x7"]
+atlas = ExtResource("2_7ihmi")
+region = Rect2(108, 36, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srpbi"]
+atlas = ExtResource("2_7ihmi")
+region = Rect2(72, 36, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spcu4"]
+atlas = ExtResource("2_7ihmi")
+region = Rect2(72, 36, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ff8ar"]
+atlas = ExtResource("2_7ihmi")
+region = Rect2(72, 36, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0eg6"]
+atlas = ExtResource("2_7ihmi")
+region = Rect2(198, 126, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b00kl"]
+atlas = ExtResource("3_en2x2")
+region = Rect2(72, 18, 18, 18)
+
+[node name="HUD" type="CanvasLayer" unique_id=1620153681]
+script = ExtResource("1_546lt")
+heart_full = SubResource("AtlasTexture_1v5rv")
+heart_empty = SubResource("AtlasTexture_q43x7")
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=1522413105]
+anchors_preset = 10
+anchor_right = 1.0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+
+[node name="Bar" type="HBoxContainer" parent="Margin" unique_id=1810179284]
+layout_mode = 2
+
+[node name="Hearts" type="HBoxContainer" parent="Margin/Bar" unique_id=1194528278]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Heart1" type="TextureRect" parent="Margin/Bar/Hearts" unique_id=225373268]
+layout_mode = 2
+texture = SubResource("AtlasTexture_srpbi")
+
+[node name="Heart2" type="TextureRect" parent="Margin/Bar/Hearts" unique_id=1266339909]
+layout_mode = 2
+texture = SubResource("AtlasTexture_spcu4")
+
+[node name="Heart3" type="TextureRect" parent="Margin/Bar/Hearts" unique_id=1551855807]
+layout_mode = 2
+texture = SubResource("AtlasTexture_ff8ar")
+
+[node name="CoinIcon" type="TextureRect" parent="Margin/Bar" unique_id=1066363726]
+layout_mode = 2
+texture = SubResource("AtlasTexture_m0eg6")
+
+[node name="CoinLabel" type="Label" parent="Margin/Bar" unique_id=1614222400]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.250980392, 0.349019608, 1)
+text = "0/0"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="Margin/Bar" unique_id=145152766]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TimeLabel" type="Label" parent="Margin/Bar" unique_id=1361498991]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.250980392, 0.349019608, 1)
+text = "0.0 秒"
+horizontal_alignment = 1
+
+[node name="ColorIcon" type="TextureRect" parent="Margin/Bar" unique_id=1654757445]
+layout_mode = 2
+texture = SubResource("AtlasTexture_b00kl")
+
+[node name="ColorLabel" type="Label" parent="Margin/Bar" unique_id=849075893]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.250980392, 0.349019608, 1)
+text = "红"
+horizontal_alignment = 1

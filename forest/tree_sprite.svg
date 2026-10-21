@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" shape-rendering="crispEdges">
+  <title>教材练习用像素松树</title>
+  <desc>2026-09-23 为本教材绘制的原创矢量素材；整数坐标，无外部图片、字体或素材依赖。</desc>
+  <path fill="#91653a" d="M28 40h8v16h4v4H24v-4h4z"/>
+  <path fill="#63482e" d="M32 42h4v14h4v4h-8z"/>
+  <path fill="#32633e" d="M28 4h8v4h4v4h4v4h4v4h4v8H44v4h8v4h4v12H8V36h4v-4h8v-4h-8v-8h4v-4h4v-4h4V8h4z"/>
+  <path fill="#438849" d="M28 8h8v4h4v4h4v4h4v4H16v-4h4v-4h4v-4h4zM24 28h16v4h8v4h4v8H12v-8h4v-4h8z"/>
+  <path fill="#78b755" d="M28 8h4v8h-8v4h-4v-4h4v-4h4zM20 32h12v4H20zM16 36h8v4h-8zM36 24h8v4h-8z"/>
+</svg>

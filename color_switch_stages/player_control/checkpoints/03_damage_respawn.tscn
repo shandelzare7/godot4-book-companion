@@ -1,0 +1,105 @@
+[gd_scene format=4]
+
+[ext_resource type="Script" path="res://checkpoints/03_damage_respawn/level.gd" id="1_l53as"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds.png" id="2_3sk1a"]
+[ext_resource type="TileSet" path="res://checkpoints/03_damage_respawn/assets/tiles.tres" id="3_08mmt"]
+[ext_resource type="PackedScene" path="res://checkpoints/03_damage_respawn/objects/goal.tscn" id="4_5ot28"]
+[ext_resource type="PackedScene" path="res://checkpoints/03_damage_respawn/objects/coin.tscn" id="5_aerfg"]
+[ext_resource type="PackedScene" path="res://checkpoints/03_damage_respawn/objects/crate.tscn" id="6_nmsli"]
+[ext_resource type="PackedScene" path="res://checkpoints/03_damage_respawn/objects/spikes.tscn" id="7_betor"]
+[ext_resource type="PackedScene" path="res://checkpoints/03_damage_respawn/player/player.tscn" id="8_vjtdm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bgw3c"]
+size = Vector2(4000, 20)
+
+[node name="Level1" type="Node2D" unique_id=599929415]
+script = ExtResource("1_l53as")
+
+[node name="Background" type="Parallax2D" parent="." unique_id=1522781560]
+scroll_scale = Vector2(0.4, 1)
+repeat_size = Vector2(192, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Background" unique_id=1908061541]
+modulate = Color(1, 1, 1, 0.7)
+position = Vector2(0, 72)
+scale = Vector2(2, 2)
+texture = ExtResource("2_3sk1a")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 72)
+
+[node name="Ground" type="TileMapLayer" parent="." unique_id=527700919]
+tile_map_data = PackedByteArray("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")
+tile_set = ExtResource("3_08mmt")
+
+[node name="Objects" type="Node2D" parent="." unique_id=228399797]
+
+[node name="Goal" parent="Objects" unique_id=2140702390 instance=ExtResource("4_5ot28")]
+position = Vector2(1107, 162)
+
+[node name="Coin1" parent="Objects" unique_id=2081883377 instance=ExtResource("5_aerfg")]
+position = Vector2(243, 63)
+
+[node name="Coin2" parent="Objects" unique_id=56463077 instance=ExtResource("5_aerfg")]
+position = Vector2(261, 63)
+
+[node name="Coin3" parent="Objects" unique_id=801708393 instance=ExtResource("5_aerfg")]
+position = Vector2(549, 81)
+
+[node name="Coin4" parent="Objects" unique_id=409734045 instance=ExtResource("5_aerfg")]
+position = Vector2(567, 81)
+
+[node name="Coin5" parent="Objects" unique_id=396207881 instance=ExtResource("5_aerfg")]
+position = Vector2(153, 99)
+
+[node name="Coin6" parent="Objects" unique_id=934424530 instance=ExtResource("5_aerfg")]
+position = Vector2(171, 99)
+
+[node name="Coin7" parent="Objects" unique_id=1341661211 instance=ExtResource("5_aerfg")]
+position = Vector2(945, 99)
+
+[node name="Coin8" parent="Objects" unique_id=1285271687 instance=ExtResource("5_aerfg")]
+position = Vector2(963, 99)
+
+[node name="Coin9" parent="Objects" unique_id=1685639417 instance=ExtResource("5_aerfg")]
+position = Vector2(855, 117)
+
+[node name="Crate1" parent="Objects" unique_id=998420830 instance=ExtResource("6_nmsli")]
+position = Vector2(441, 153)
+
+[node name="Spikes1" parent="Objects" unique_id=2072278911 instance=ExtResource("7_betor")]
+position = Vector2(675, 153)
+
+[node name="Spikes2" parent="Objects" unique_id=303647608 instance=ExtResource("7_betor")]
+position = Vector2(693, 153)
+
+[node name="Player" parent="." unique_id=1820437530 instance=ExtResource("8_vjtdm")]
+position = Vector2(45, 150)
+
+[node name="DeathZone" type="Area2D" parent="." unique_id=21798526]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone" unique_id=1528152564]
+position = Vector2(576, 256)
+shape = SubResource("RectangleShape2D_bgw3c")
+
+[node name="Banner" type="CanvasLayer" parent="." unique_id=1877618066]
+layer = 5
+
+[node name="LevelLabel" type="Label" parent="Banner" unique_id=1853407192]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -25.0
+offset_top = 12.0
+offset_right = 25.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.2, 0.25, 0.35, 1)
+text = "第 1 关"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="DeathZone" to="." method="_on_death_zone_body_entered"]

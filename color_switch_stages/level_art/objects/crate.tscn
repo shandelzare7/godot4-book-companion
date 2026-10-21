@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/tiles.png" id="1_qx60w"]
+
+[node name="Crate" type="Node2D" unique_id=52182892]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1923282949]
+texture = ExtResource("1_qx60w")
+region_enabled = true
+region_rect = Rect2(108, 18, 18, 18)

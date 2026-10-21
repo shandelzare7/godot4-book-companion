@@ -1,0 +1,27 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://tree_sprite.png" id="1_gs3vd"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fww4b"]
+blend_mode = 1
+
+[node name="ResourceLab" type="Node2D" unique_id=286793579]
+
+[node name="Background" type="ColorRect" parent="." unique_id=332115342]
+offset_right = 800.0
+offset_bottom = 600.0
+color = Color(0.321569, 0.392157, 0.478431, 1)
+
+[node name="TreeA" type="Sprite2D" parent="." unique_id=1059588730]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_fww4b")
+position = Vector2(250, 270)
+scale = Vector2(3, 3)
+texture = ExtResource("1_gs3vd")
+
+[node name="TreeB" type="Sprite2D" parent="." unique_id=1860262802]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_fww4b")
+position = Vector2(550, 270)
+scale = Vector2(3, 3)
+texture = ExtResource("1_gs3vd")

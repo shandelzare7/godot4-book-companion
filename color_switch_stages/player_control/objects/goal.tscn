@@ -1,0 +1,45 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://objects/goal.gd" id="1_c3dbx"]
+[ext_resource type="Texture2D" path="res://assets/tiles.png" id="2_44lh3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t8lag"]
+size = Vector2(10, 30)
+
+[node name="Goal" type="Area2D" unique_id=2140702390]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_c3dbx")
+
+[node name="DoorTop" type="Sprite2D" parent="." unique_id=2037638883]
+position = Vector2(0, -27)
+texture = ExtResource("2_44lh3")
+region_enabled = true
+region_rect = Rect2(180, 108, 18, 18)
+
+[node name="DoorBottom" type="Sprite2D" parent="." unique_id=1006349889]
+position = Vector2(0, -9)
+texture = ExtResource("2_44lh3")
+region_enabled = true
+region_rect = Rect2(180, 126, 18, 18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=638204524]
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_t8lag")
+
+[node name="Glow" type="CPUParticles2D" parent="." unique_id=298501948]
+position = Vector2(0, -18)
+amount = 10
+lifetime = 1.5
+emission_shape = 3
+emission_rect_extents = Vector2(9, 16)
+direction = Vector2(0, -1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 6.0
+initial_velocity_max = 12.0
+scale_amount_min = 1.5
+scale_amount_max = 2.5
+color = Color(1, 0.8, 0.2, 1)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

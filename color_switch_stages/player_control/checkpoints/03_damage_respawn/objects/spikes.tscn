@@ -1,0 +1,23 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://checkpoints/03_damage_respawn/objects/spikes.gd" id="1_f3r3t"]
+[ext_resource type="Texture2D" path="res://assets/tiles.png" id="2_ymht5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kluxo"]
+size = Vector2(14, 6)
+
+[node name="Spikes" type="Area2D" unique_id=2072278911]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_f3r3t")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=787655842]
+texture = ExtResource("2_ymht5")
+region_enabled = true
+region_rect = Rect2(144, 54, 18, 18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=440495200]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_kluxo")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

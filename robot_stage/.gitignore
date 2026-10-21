@@ -1,0 +1,7 @@
+# Godot-generated cache and imported files
+.godot/
+
+# C#/.NET local build products (if added later)
+.mono/
+obj/
+bin/

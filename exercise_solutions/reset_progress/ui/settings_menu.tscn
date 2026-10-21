@@ -1,0 +1,114 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/settings_menu.gd" id="1_h6jc8"]
+
+[node name="SettingsMenu" type="Control" unique_id=790162471]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_h6jc8")
+
+[node name="Dim" type="ColorRect" parent="." unique_id=766748881]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.501960784)
+
+[node name="Center" type="CenterContainer" parent="." unique_id=1604092505]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="PanelContainer" parent="Center" unique_id=1004442587]
+layout_mode = 2
+
+[node name="Box" type="VBoxContainer" parent="Center/Panel" unique_id=1225195922]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="TitleLabel" type="Label" parent="Center/Panel/Box" unique_id=26517758]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "设置"
+horizontal_alignment = 1
+
+[node name="MusicRow" type="HBoxContainer" parent="Center/Panel/Box" unique_id=2032392651]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Center/Panel/Box/MusicRow" unique_id=1004820253]
+layout_mode = 2
+text = "音乐"
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="Center/Panel/Box/MusicRow" unique_id=1208692109]
+custom_minimum_size = Vector2(80, 8)
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../BackButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../SfxRow/SfxSlider")
+focus_next = NodePath("../../SfxRow/SfxSlider")
+focus_previous = NodePath("../../BackButton")
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 0.8
+
+[node name="ValueLabel" type="Label" parent="Center/Panel/Box/MusicRow" unique_id=1076815432]
+layout_mode = 2
+text = "80%"
+horizontal_alignment = 1
+
+[node name="SfxRow" type="HBoxContainer" parent="Center/Panel/Box" unique_id=2012365887]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Center/Panel/Box/SfxRow" unique_id=2018966891]
+layout_mode = 2
+text = "音效"
+horizontal_alignment = 1
+
+[node name="SfxSlider" type="HSlider" parent="Center/Panel/Box/SfxRow" unique_id=912462332]
+custom_minimum_size = Vector2(80, 8)
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../MusicRow/MusicSlider")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../ResetButton")
+focus_next = NodePath("../../ResetButton")
+focus_previous = NodePath("../../MusicRow/MusicSlider")
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 0.8
+
+[node name="ValueLabel" type="Label" parent="Center/Panel/Box/SfxRow" unique_id=1183435067]
+layout_mode = 2
+text = "80%"
+horizontal_alignment = 1
+
+[node name="ResetButton" type="Button" parent="Center/Panel/Box" unique_id=1156215589]
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../SfxRow/SfxSlider")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../BackButton")
+focus_next = NodePath("../BackButton")
+focus_previous = NodePath("../SfxRow/SfxSlider")
+text = "清除记录"
+
+[node name="BackButton" type="Button" parent="Center/Panel/Box" unique_id=961283986]
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../ResetButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../MusicRow/MusicSlider")
+focus_next = NodePath("../MusicRow/MusicSlider")
+focus_previous = NodePath("../ResetButton")
+text = "返回"
+
+[connection signal="value_changed" from="Center/Panel/Box/MusicRow/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="Center/Panel/Box/SfxRow/SfxSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="Center/Panel/Box/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="Center/Panel/Box/BackButton" to="." method="_on_back_button_pressed"]

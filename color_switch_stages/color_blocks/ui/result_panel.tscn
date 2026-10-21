@@ -1,0 +1,62 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/result_panel.gd" id="1_oh3ep"]
+[ext_resource type="AudioStream" path="res://assets/sounds/level_clear.ogg" id="2_2uch0"]
+[ext_resource type="AudioStream" path="res://assets/sounds/game_over.ogg" id="3_76dsk"]
+
+[node name="ResultPanel" type="CanvasLayer" unique_id=966251794]
+process_mode = 3
+layer = 10
+script = ExtResource("1_oh3ep")
+
+[node name="Dim" type="ColorRect" parent="." unique_id=165786491]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.501960784)
+
+[node name="Center" type="CenterContainer" parent="." unique_id=1833975399]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="PanelContainer" parent="Center" unique_id=1422083135]
+layout_mode = 2
+
+[node name="Box" type="VBoxContainer" parent="Center/Panel" unique_id=1942243818]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="TitleLabel" type="Label" parent="Center/Panel/Box" unique_id=1389194317]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "过关！"
+horizontal_alignment = 1
+
+[node name="InfoLabel" type="Label" parent="Center/Panel/Box" unique_id=563809906]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="NextButton" type="Button" parent="Center/Panel/Box" unique_id=57900220]
+layout_mode = 2
+text = "下一关"
+
+[node name="RetryButton" type="Button" parent="Center/Panel/Box" unique_id=683310338]
+layout_mode = 2
+text = "重玩本关"
+
+[node name="MenuButton" type="Button" parent="Center/Panel/Box" unique_id=1571502162]
+layout_mode = 2
+text = "返回主菜单"
+
+[node name="ClearSound" type="AudioStreamPlayer" parent="." unique_id=274954297]
+stream = ExtResource("2_2uch0")
+bus = &"SFX"
+
+[node name="FailSound" type="AudioStreamPlayer" parent="." unique_id=601407471]
+stream = ExtResource("3_76dsk")
+bus = &"SFX"
+
+[connection signal="pressed" from="Center/Panel/Box/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="Center/Panel/Box/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="Center/Panel/Box/MenuButton" to="." method="_on_menu_button_pressed"]

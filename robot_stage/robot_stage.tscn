@@ -1,0 +1,31 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://robot_stage.gd" id="1_o2rln"]
+[ext_resource type="Texture2D" path="res://icon.svg" id="2_4lv6w"]
+[ext_resource type="Script" path="res://robot.gd" id="3_1to1v"]
+
+[node name="RobotStage" type="Node2D" unique_id=609054027]
+script = ExtResource("1_o2rln")
+
+[node name="Robot" type="Sprite2D" parent="." unique_id=2121604701]
+position = Vector2(100, 300)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_4lv6w")
+script = ExtResource("3_1to1v")
+
+[node name="CountLabel" type="Label" parent="." unique_id=1142597492]
+offset_left = 24.0
+offset_top = 20.0
+offset_right = 25.0
+offset_bottom = 43.0
+theme_override_font_sizes/font_size = 28
+text = "已收集：0"
+
+[node name="RestartButton" type="Button" parent="." unique_id=1005325192]
+offset_left = 656.0
+offset_top = 20.0
+offset_right = 776.0
+offset_bottom = 64.0
+text = "重新开始"
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]

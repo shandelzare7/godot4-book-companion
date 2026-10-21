@@ -1,0 +1,57 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/tiles.png" id="1_s3apc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_je4cw"]
+atlas = ExtResource("1_s3apc")
+region = Rect2(198, 126, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1o7s2"]
+atlas = ExtResource("1_s3apc")
+region = Rect2(216, 126, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iwokp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_je4cw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1o7s2")
+}],
+"loop": 1,
+"name": &"spin",
+"speed": 4.0
+}]
+
+[sub_resource type="Animation" id="Animation_hyi47"]
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_osa5c"]
+_data = {
+&"float": SubResource("Animation_hyi47")
+}
+
+[node name="Coin" type="Node2D" unique_id=1044047257]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1615013199]
+sprite_frames = SubResource("SpriteFrames_iwokp")
+animation = &"spin"
+autoplay = "spin"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=615744354]
+libraries/ = SubResource("AnimationLibrary_osa5c")
+autoplay = &"float"

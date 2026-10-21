@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://checkpoints/07_spawn_blocks.gd" id="1_ybraq"]
+[ext_resource type="Texture2D" path="res://icon.svg" id="2_ne6e1"]
+[ext_resource type="Script" path="res://checkpoints/06_click_move.gd" id="3_7qcnr"]
+
+[node name="RobotStage" type="Node2D" unique_id=1163629504]
+script = ExtResource("1_ybraq")
+
+[node name="Robot" type="Sprite2D" parent="." unique_id=233586066]
+position = Vector2(100, 300)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ne6e1")
+script = ExtResource("3_7qcnr")

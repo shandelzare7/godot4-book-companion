@@ -1,0 +1,23 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://objects/spring.gd" id="1_spring"]
+[ext_resource type="Texture2D" path="res://assets/tiles.png" id="2_tiles"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_spring"]
+size = Vector2(16, 6)
+
+[node name="Spring" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_spring")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tiles")
+region_enabled = true
+region_rect = Rect2(144, 36, 18, 18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_spring")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

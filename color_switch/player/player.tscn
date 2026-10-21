@@ -1,0 +1,106 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_g6k8r"]
+[ext_resource type="Texture2D" path="res://assets/characters.png" id="2_boad6"]
+[ext_resource type="AudioStream" path="res://assets/sounds/jump.ogg" id="3_rgyib"]
+[ext_resource type="AudioStream" path="res://assets/sounds/switch.ogg" id="4_hg6s5"]
+[ext_resource type="AudioStream" path="res://assets/sounds/denied.ogg" id="5_8t03j"]
+[ext_resource type="AudioStream" path="res://assets/sounds/hurt.ogg" id="6_2ieo8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebec5"]
+atlas = ExtResource("2_boad6")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yllr7"]
+atlas = ExtResource("2_boad6")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kb6p2"]
+atlas = ExtResource("2_boad6")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wodsf"]
+atlas = ExtResource("2_boad6")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_32hag"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebec5")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yllr7")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kb6p2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wodsf")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqiix"]
+size = Vector2(12, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7oew"]
+size = Vector2(10, 16)
+
+[node name="Player" type="CharacterBody2D" unique_id=1083872011 groups=["player"]]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_g6k8r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1863920053]
+sprite_frames = SubResource("SpriteFrames_32hag")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1661209820]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_tqiix")
+
+[node name="SwitchProbe" type="ShapeCast2D" parent="." unique_id=1039340325]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_e7oew")
+target_position = Vector2(0, 0)
+collision_mask = 0
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1074168586]
+limit_left = 0
+limit_top = 0
+limit_bottom = 216
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
+[node name="InvincibleTimer" type="Timer" parent="." unique_id=1011187178]
+one_shot = true
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="." unique_id=263450862]
+stream = ExtResource("3_rgyib")
+bus = &"SFX"
+
+[node name="SwitchSound" type="AudioStreamPlayer" parent="." unique_id=1817184366]
+stream = ExtResource("4_hg6s5")
+bus = &"SFX"
+
+[node name="DeniedSound" type="AudioStreamPlayer" parent="." unique_id=1658271479]
+stream = ExtResource("5_8t03j")
+bus = &"SFX"
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="." unique_id=2103665006]
+stream = ExtResource("6_2ieo8")
+bus = &"SFX"

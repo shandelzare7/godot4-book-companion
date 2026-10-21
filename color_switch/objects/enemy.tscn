@@ -1,0 +1,66 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://objects/enemy.gd" id="1_41oev"]
+[ext_resource type="Texture2D" path="res://assets/characters.png" id="2_we7g8"]
+[ext_resource type="AudioStream" path="res://assets/sounds/stomp.ogg" id="3_3hb37"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ld5k"]
+atlas = ExtResource("2_we7g8")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l24ub"]
+atlas = ExtResource("2_we7g8")
+region = Rect2(24, 48, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lw0qc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ld5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l24ub")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_migdc"]
+size = Vector2(14, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dkbxi"]
+size = Vector2(16, 13)
+
+[node name="Enemy" type="CharacterBody2D" unique_id=262690351]
+collision_layer = 16
+collision_mask = 5
+script = ExtResource("1_41oev")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1583129710]
+sprite_frames = SubResource("SpriteFrames_lw0qc")
+animation = &"walk"
+autoplay = "walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=143539982]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_migdc")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=692994820]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=812184898]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_dkbxi")
+
+[node name="EdgeCheck" type="RayCast2D" parent="." unique_id=408233606]
+position = Vector2(-8, 6)
+target_position = Vector2(0, 10)
+collision_mask = 5
+
+[node name="StompSound" type="AudioStreamPlayer" parent="." unique_id=1749630984]
+stream = ExtResource("3_3hb37")
+bus = &"SFX"
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

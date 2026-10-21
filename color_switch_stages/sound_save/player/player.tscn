@@ -1,0 +1,86 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_yw30f"]
+[ext_resource type="Texture2D" path="res://assets/characters.png" id="2_qjkh3"]
+[ext_resource type="AudioStream" path="res://assets/sounds/jump.ogg" id="3_g6k8r"]
+[ext_resource type="AudioStream" path="res://assets/sounds/hurt.ogg" id="4_boad6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgyib"]
+atlas = ExtResource("2_qjkh3")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hg6s5"]
+atlas = ExtResource("2_qjkh3")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8t03j"]
+atlas = ExtResource("2_qjkh3")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ieo8"]
+atlas = ExtResource("2_qjkh3")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ebec5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgyib")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hg6s5")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8t03j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ieo8")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yllr7"]
+size = Vector2(12, 18)
+
+[node name="Player" type="CharacterBody2D" unique_id=56303415 groups=["player"]]
+collision_layer = 2
+script = ExtResource("1_yw30f")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1930775653]
+sprite_frames = SubResource("SpriteFrames_ebec5")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=671831270]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_yllr7")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1388242754]
+limit_left = 0
+limit_top = 0
+limit_bottom = 216
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
+[node name="InvincibleTimer" type="Timer" parent="." unique_id=526255220]
+one_shot = true
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="." unique_id=426026571]
+stream = ExtResource("3_g6k8r")
+bus = &"SFX"
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="." unique_id=140594559]
+stream = ExtResource("4_boad6")
+bus = &"SFX"
